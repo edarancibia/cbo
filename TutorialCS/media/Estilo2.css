@@ -1,0 +1,30 @@
+﻿#marco2
+{
+    width: 1200px;
+    background-color: white;
+    margin: 0 auto;
+    padding: 10px;
+    border: 5px solid #dedede;
+    height: 700px;
+}
+
+
+div.tabla{
+text-align: center;
+font-size: 14px;
+}
+
+div.tabla table {
+margin: 0 auto;
+text-align: left;
+color: #333; font-family: Helvetica, Arial, sans-serif; border-collapse: collapse;
+font-size: 14px;
+border: 1px;
+}
+
+
+td, th { border: 1px solid transparent; height: 30px; }
+th { background: #D3D3D3; font-weight: bold; }
+td { background: #FAFAFA; text-align: center; color: Blue; }
+tr:nth-child(even) td { background: #F1F1F1; }  
+tr:nth-child(odd) td { background: #FEFEFE; } 

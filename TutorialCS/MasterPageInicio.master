@@ -1,0 +1,54 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPageInicio.master.cs" Inherits="MasterPageInicio" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head id="Head1" runat="server">
+    <title></title>
+    <link href="~/Media/Estilos.css" rel="stylesheet" type="text/css" />
+    <link href="~/Media/Estilo2.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server"></asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="Form1" runat="server">
+    <div id="marco2">
+    <div class="page">
+        <div id="header">
+			<div class="bg-help">
+				
+			</div>
+        </div>
+        <div class="shadow"></div>
+        <div id="divmenu">
+         <ul id="boton">
+           <li><a href="Inicio.aspx">Inicio</a></li>
+           <li><a href="Ambulatorio.aspx">Ambulatorio</a></li>
+           <li><a href="PreIngreso.aspx">Admisión</a></li>
+           <li><a href="Hospitalizacion.aspx">Ingresos</a></li>
+           <li><a href="Default.aspx">Reservas</a></li>
+           <li><a href="Traslados.aspx">Traslados</a></li>
+           <li><a href="Altas.aspx">Altas</a></li>
+           <li><a href="GesAseo.aspx">Aseo</a></li>
+           <li><a href="CtrlMantencion.aspx">Mantención</a></li>
+           <li><a href="PanelInformes.aspx">Informes</a></li>
+         </ul>
+        </div>
+        <div id="logindiv">
+           <asp:Label ID="Label1" runat="server" Text="Label"><strong></strong></asp:Label>
+            <asp:LinkButton ID="LinkButton1"
+               runat="server" onclick="LinkButton1_Click">LinkButton</asp:LinkButton>
+        </div>
+        <br />
+        <div id="principal" class="main">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+        </div>
+
+         <div id="derecha">
+
+         </div>
+    </div>
+    <div id="footer">
+        <p>Departamento de Informatica Clinica Alemana Osorno 2015. Telefono: 4012. </p>
+    </div>
+    </div>
+    </form>
+</body>
+</html>
