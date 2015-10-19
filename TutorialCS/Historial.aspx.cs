@@ -38,7 +38,11 @@ public partial class Historial : System.Web.UI.Page
 
         try
         {
-            SqlCommand cmd = new SqlCommand("SELECT G.DESCRIPCION AS EVENTO,A.FECHA,SUBSTRING(D.DESCRIP,1,4) +' '+ LTRIM(Str(E.NRO_CA, 25))CAMA,F.NOMBRES +' '+ F.A_PAT AS USUARIO FROM HOS_GESTIONCAMA A, SECTOR C,PIEZA D, CAMA E, PERSONAL F,HOS_ESTADOCAMAS G WHERE A.NRO_FI=@ficha AND A.ID_CAMA=E.ID_CAMA AND E.COD_PIE=D.COD_PIE AND D.COD_SEC=C.COD_SEC AND A.ID_ESTADOCAMA=G.ID_ESTADOCAMA AND A.USUARIO=F.RUT_NUM ORDER BY A.FECHA,A.HORA", con);
+            SqlCommand cmd = new SqlCommand(@"SELECT G.DESCRIPCION AS EVENTO,A.FECHA,SUBSTRING(D.DESCRIP,1,4) +' '+ LTRIM(Str(E.NRO_CA, 25))CAMA,
+                                            F.NOMBRES +' '+ F.A_PAT AS USUARIO 
+                                            FROM HOS_GESTIONCAMA A, SECTOR C,PIEZA D, CAMA E, PERSONAL F,HOS_ESTADOCAMAS G 
+                                            WHERE A.NRO_FI=@ficha AND A.ID_CAMA=E.ID_CAMA AND E.COD_PIE=D.COD_PIE AND D.COD_SEC=C.COD_SEC AND
+                                            A.ID_ESTADOCAMA=G.ID_ESTADOCAMA AND A.USUARIO=F.RUT_NUM ORDER BY A.FECHA,A.HORA", con);
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.AddWithValue("ficha", ficha);
 

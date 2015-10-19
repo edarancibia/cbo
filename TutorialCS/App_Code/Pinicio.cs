@@ -30,7 +30,14 @@ public class Pinicio
         using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["cnsicbo"].ConnectionString))
         {
             con.Open();
-            SqlCommand cmd = new SqlCommand("SELECT(SELECT COUNT(*) FROM SECTOR A, PIEZA B, CAMA C LEFT JOIN HOS_GESTIONCAMA H ON C.ID_CAMA=H.ID_CAMA WHERE (A.ESTADO=1) AND (A.COD_SEC=B.COD_SEC AND B.ESTADO=1) AND (B.COD_PIE=C.COD_PIE) AND (h.ID_ESTADOCAMA=5 AND h.ESTADO=1) AND (a.COD_SEC=1)OR  (A.ESTADO=1) AND (A.COD_SEC=B.COD_SEC AND B.ESTADO=1) AND (B.COD_PIE=C.COD_PIE) AND (h.ID_ESTADOCAMA=22 AND h.ESTADO=1) AND (a.COD_SEC=1) OR(A.ESTADO=1) AND (A.COD_SEC=B.COD_SEC AND B.ESTADO=1) AND (B.COD_PIE=C.COD_PIE) AND (h.ID_ESTADOCAMA BETWEEN 12 AND 13 AND h.ESTADO=1) AND (a.COD_SEC=1)OR (A.COD_SEC=B.COD_SEC AND B.ESTADO=1) AND (B.COD_PIE=C.COD_PIE) AND (h.ID_ESTADOCAMA=18 AND h.EVENTOPAC=1) AND (a.COD_SEC=1))AS OCUPH", con);
+            SqlCommand cmd = new SqlCommand(@"SELECT(SELECT COUNT(*) FROM SECTOR A, PIEZA B, CAMA C 
+                                             LEFT JOIN HOS_GESTIONCAMA H ON C.ID_CAMA=H.ID_CAMA 
+                                            WHERE (A.ESTADO=1) AND (A.COD_SEC=B.COD_SEC AND B.ESTADO=1) AND (B.COD_PIE=C.COD_PIE) AND 
+                                            (h.ID_ESTADOCAMA=5 AND h.ESTADO=1) AND (a.COD_SEC=1)OR  (A.ESTADO=1) AND 
+                                            (A.COD_SEC=B.COD_SEC AND B.ESTADO=1) AND (B.COD_PIE=C.COD_PIE) AND (h.ID_ESTADOCAMA=22 AND h.ESTADO=1) 
+                                            AND (a.COD_SEC=1) OR(A.ESTADO=1) AND (A.COD_SEC=B.COD_SEC AND B.ESTADO=1) AND (B.COD_PIE=C.COD_PIE) AND 
+                                            (h.ID_ESTADOCAMA BETWEEN 12 AND 13 AND h.ESTADO=1) AND (a.COD_SEC=1)OR (A.COD_SEC=B.COD_SEC AND B.ESTADO=1) 
+                                            AND (B.COD_PIE=C.COD_PIE) AND (h.ID_ESTADOCAMA=18 AND h.EVENTOPAC=1) AND (a.COD_SEC=1))AS OCUPH", con);
 
             ocuh = (int)cmd.ExecuteScalar();
 
@@ -90,7 +97,10 @@ public class Pinicio
         using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["cnsicbo"].ConnectionString))
         {
             con.Open();
-            SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM SECTOR A, PIEZA B, CAMA C LEFT JOIN HOS_GESTIONCAMA H ON C.ID_CAMA=H.ID_CAMA AND h.ESTADO=1 WHERE (A.ESTADO=1) AND (A.COD_SEC=B.COD_SEC AND B.ESTADO=1) AND (B.COD_PIE=C.COD_PIE) AND (h.ID_ESTADOCAMA is NULL AND a.COD_SEC=1)", con);
+            SqlCommand cmd = new SqlCommand(@"SELECT COUNT(*) FROM SECTOR A, PIEZA B, CAMA C 
+                                            LEFT JOIN HOS_GESTIONCAMA H ON C.ID_CAMA=H.ID_CAMA AND h.ESTADO=1 AND NOT (h.ID_ESTADOCAMA BETWEEN 9 AND 11)
+                                            WHERE (A.ESTADO=1) AND (A.COD_SEC=B.COD_SEC AND B.ESTADO=1) AND (B.COD_PIE=C.COD_PIE) AND 
+                                            (h.ID_ESTADOCAMA is NULL AND a.COD_SEC=1)", con);
 
             disph = (int)cmd.ExecuteScalar();
 
@@ -104,7 +114,10 @@ public class Pinicio
         using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["cnsicbo"].ConnectionString))
         {
             con.Open();
-            SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM SECTOR A, PIEZA B, CAMA C LEFT JOIN HOS_GESTIONCAMA H ON C.ID_CAMA=H.ID_CAMA AND h.ESTADO=1 WHERE (A.ESTADO=1) AND (A.COD_SEC=B.COD_SEC AND B.ESTADO=1) AND (B.COD_PIE=C.COD_PIE) AND (h.ID_ESTADOCAMA is NULL AND a.COD_SEC=2)", con);
+            SqlCommand cmd = new SqlCommand(@"SELECT COUNT(*) FROM SECTOR A, PIEZA B, CAMA C 
+                                            LEFT JOIN HOS_GESTIONCAMA H ON C.ID_CAMA=H.ID_CAMA AND h.ESTADO=1 AND NOT (h.ID_ESTADOCAMA BETWEEN 9 AND 11)
+                                            WHERE (A.ESTADO=1) AND (A.COD_SEC=B.COD_SEC AND B.ESTADO=1) AND (B.COD_PIE=C.COD_PIE) 
+                                            AND (h.ID_ESTADOCAMA is NULL AND a.COD_SEC=2)", con);
 
             disF = (int)cmd.ExecuteScalar();
 
@@ -118,7 +131,10 @@ public class Pinicio
         using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["cnsicbo"].ConnectionString))
         {
             con.Open();
-            SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM SECTOR A, PIEZA B, CAMA C LEFT JOIN HOS_GESTIONCAMA H ON C.ID_CAMA=H.ID_CAMA AND h.ESTADO=1 WHERE (A.ESTADO=1) AND (A.COD_SEC=B.COD_SEC AND B.ESTADO=1) AND (B.COD_PIE=C.COD_PIE) AND (h.ID_ESTADOCAMA is NULL AND a.COD_SEC=3)", con);
+            SqlCommand cmd = new SqlCommand(@"SELECT COUNT(*) FROM SECTOR A, PIEZA B, CAMA C 
+                                            LEFT JOIN HOS_GESTIONCAMA H ON C.ID_CAMA=H.ID_CAMA AND h.ESTADO=1 AND NOT (h.ID_ESTADOCAMA BETWEEN 9 AND 11)
+                                            WHERE (A.ESTADO=1) AND (A.COD_SEC=B.COD_SEC AND B.ESTADO=1) AND (B.COD_PIE=C.COD_PIE) 
+                                            AND (h.ID_ESTADOCAMA is NULL AND a.COD_SEC=3)", con);
 
             disM = (int)cmd.ExecuteScalar();
 
@@ -132,7 +148,10 @@ public class Pinicio
         using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["cnsicbo"].ConnectionString))
         {
             con.Open();
-            SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM SECTOR A, PIEZA B, CAMA C LEFT JOIN HOS_GESTIONCAMA H ON C.ID_CAMA=H.ID_CAMA AND h.ESTADO=1 WHERE (A.ESTADO=1) AND (A.COD_SEC=B.COD_SEC AND B.ESTADO=1) AND (B.COD_PIE=C.COD_PIE) AND (h.ID_ESTADOCAMA is NULL AND a.COD_SEC=11)", con);
+            SqlCommand cmd = new SqlCommand(@"SELECT COUNT(*) FROM SECTOR A, PIEZA B, CAMA C 
+                                            LEFT JOIN HOS_GESTIONCAMA H ON C.ID_CAMA=H.ID_CAMA AND h.ESTADO=1 AND NOT (h.ID_ESTADOCAMA BETWEEN 9 AND 11)
+                                            WHERE (A.ESTADO=1) AND (A.COD_SEC=B.COD_SEC AND B.ESTADO=1) AND (B.COD_PIE=C.COD_PIE) 
+                                            AND (h.ID_ESTADOCAMA is NULL AND a.COD_SEC=11)", con);
 
             disE = (int)cmd.ExecuteScalar();
 
