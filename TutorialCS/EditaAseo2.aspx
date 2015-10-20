@@ -59,17 +59,19 @@
                 </asp:ScriptManager>
                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
-             <asp:Button ID="bntcambiatipo" runat="server" onclick="Button2_Click" 
+
+                 &nbsp
+                <asp:Button ID="bntcambiatipo" runat="server" onclick="Button2_Click" 
                     Text="Cambiar tipo" Width="90px"  OnClientClick="return confirm('¿Confirma que desea cambiar el tipo de aseo?');"/>
                     </ContentTemplate>
                     </asp:UpdatePanel>
-            </td>
-            <td>
+                </td>
+                <td>
 
-                &nbsp&nbsp
+                &nbsp
                 <asp:Button ID="Button1" runat="server" onclick="Button1_Click" 
                     Text="Finalizar" Width="90px" OnClientClick="return confirm('¿Confirma que desea dar por terminado el aseo?');"/>
-                &nbsp&nbsp
+                &nbsp
                 <asp:Button ID="bntcancela" runat="server" onclick="Button3_Click" 
                     Text="Salir" Width="90px" />
              </td>

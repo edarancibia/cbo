@@ -13,12 +13,12 @@
 	            dps.commandCallBack('refresh');
 	        }
 	    };
-        /*
+        
 	    function createEvent(start, end, resource) {
 	        modal.height = 250;
-	        modal.showUrl("Aseo.aspx?start=" + start.toStringSortable() + "&end=" + end.toStringSortable() + "&r=" + resource);
+	        modal.showUrl("NuevoAseo.aspx?start=" + start.toStringSortable() + "&end=" + end.toStringSortable() + "&r=" + resource);
 	    }
-        */
+        
 	    function editEvent(id) {
 	        modal.height = 300;
 	        modal.showUrl("EditaAseo2.aspx?id=" + id);
