@@ -105,6 +105,16 @@ public partial class Edit : Page
                     }
                     else
                     {
+                        funcamas.buscaPieza(cama);
+                        int pieza = funcamas.pieza;
+                        funcamas.obtieneSector(pieza);
+
+                        string hora2 = Convert.ToString(DateTime.Now.Hour);
+                        string minuto = Convert.ToString(DateTime.Now.Minute);
+
+                        funcamas.obtieneNCama(cama);
+                        funcamas.updhos_camaactualpaciente(ficha, funcamas.sector, pieza, funcamas.Ncama, fecha, hora2, minuto);
+
                         camasPieza(funcamas.pieza);
                         funcamas.guardaPreIngreso(cama, rut2, 18, fecha, fechaini, fechafin, hora, 0, 1, usuario, tipoin, tipopac, fecha, ficha);
                         Modal.Close(this, "OK");

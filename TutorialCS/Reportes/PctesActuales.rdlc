@@ -32,6 +32,10 @@
           <DataField>NOMBRE</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="FICHA">
+          <DataField>FICHA</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
       </Fields>
       <Query>
         <DataSourceName>DataSet_Pctes_actuales</DataSourceName>
@@ -39,7 +43,7 @@
       </Query>
       <rd:DataSetInfo>
         <rd:DataSetName>DataSet_Pctes_actuales</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\EDANIEL\Desktop\GestionCamasCBO\TutorialCS\App_Code\DataSet_Pctes_actuales.xsd</rd:SchemaPath>
+        <rd:SchemaPath>C:\Users\EDANIEL\Desktop\cbo\GestionCamasCBO\TutorialCS\App_Code\DataSet_Pctes_actuales.xsd</rd:SchemaPath>
         <rd:TableName>HOS_PACIENTES_ACTUALES</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
@@ -53,13 +57,16 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>0.62713in</Width>
+              <Width>0.48983in</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>0.58842in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.52592in</Width>
+              <Width>0.47717in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>2.77567in</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>0.68441in</Width>
@@ -138,6 +145,42 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox3</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>Aqua</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox2">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>FICHA</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox2</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -325,6 +368,40 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
+                    <Textbox Name="FICHA">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!FICHA.Value</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>FICHA</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
                     <Textbox Name="PACIENTE">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
@@ -430,6 +507,7 @@
             <TablixMember />
             <TablixMember />
             <TablixMember />
+            <TablixMember />
           </TablixMembers>
         </TablixColumnHierarchy>
         <TablixRowHierarchy>
@@ -444,9 +522,9 @@
         </TablixRowHierarchy>
         <DataSetName>DataSet1</DataSetName>
         <Top>0.09737cm</Top>
-        <Left>0.49424cm</Left>
+        <Left>0.17674cm</Left>
         <Height>1.2cm</Height>
-        <Width>14.48256cm</Width>
+        <Width>15.98022cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -457,7 +535,7 @@
     <Height>2.6875in</Height>
     <Style />
   </Body>
-  <Width>6.5in</Width>
+  <Width>6.48625in</Width>
   <Page>
     <PageHeader>
       <Height>2.68174cm</Height>

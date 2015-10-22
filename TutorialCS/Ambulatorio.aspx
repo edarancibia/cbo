@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Ambulatorio" Language="C#" MasterPageFile="~/MasterPage2.master" AutoEventWireup="true" CodeFile="Ambulatorio.aspx.cs" Inherits="Ambulatorio" %>
+﻿<%@ Page Title="Ambulatorio" Language="C#" MasterPageFile="~/MasterPage2.master" AutoEventWireup="true" CodeFile="Ambulatorio.aspx.cs" Inherits="Ambulatorio" Culture="es-Cl" %>
 <%@ Register Assembly="DayPilot" Namespace="DayPilot.Web.Ui" TagPrefix="DayPilot" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
 

@@ -6,6 +6,10 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
+
+        <asp:ImageButton ID="ImageButton1" runat="server" 
+        ImageUrl="~/media/layout/print.png" onclick="ImageButton1_Click" />
+    <br />
     <asp:ScriptManager ID="ScriptManager1" runat="server">
     </asp:ScriptManager>
     <asp:Button ID="Button1" runat="server" Text="Button" onclick="Button1_Click" />
@@ -18,6 +22,11 @@
             </DataSources>
         </LocalReport>
     </rsweb:ReportViewer>
+
+      <iframe id="frmPrint" name="IframeName" width="500" 
+  height="200" runat="server" 
+  style="display: none" runat="server"></iframe>
+
     <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" 
         OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" 
         TypeName="DataSet_RPT_ALTASDIATableAdapters.HOS_ALTASDIATableAdapter">
