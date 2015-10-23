@@ -84,7 +84,7 @@ public partial class Edit : Page
 
        DateTime fechaini = Convert.ToDateTime(TextBoxStart.Text);
        DateTime fechafin = Convert.ToDateTime(TextBoxEnd.Text);
-       DateTime fecha = Convert.ToDateTime(txtfecha.Text);
+       DateTime fecha = DateTime.Now;
        string hora = txthora.Text;
        string cama = cboCamas.SelectedValue;
        string id = Request.QueryString["id"];
