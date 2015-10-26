@@ -112,6 +112,11 @@ public partial class Edit : Page
                         string hora2 = Convert.ToString(DateTime.Now.Hour);
                         string minuto = Convert.ToString(DateTime.Now.Minute);
 
+                        if (funcamas.tieneCamaActual(ficha))
+                        {
+                            funcamas.borraCamaActual(ficha);
+                        }
+
                         funcamas.obtieneNCama(cama);
                         funcamas.updhos_camaactualpaciente(ficha, funcamas.sector, pieza, funcamas.Ncama, fecha, hora2, minuto);
 
@@ -145,6 +150,11 @@ public partial class Edit : Page
                     
                     string hora2 = Convert.ToString(DateTime.Now.Hour);
                     string minuto = Convert.ToString(DateTime.Now.Minute);
+
+                    if (funcamas.tieneCamaActual(ficha))
+                    {
+                        funcamas.borraCamaActual(ficha);
+                    }
 
                     funcamas.obtieneNCama(cama);
                     funcamas.updhos_camaactualpaciente(ficha,funcamas.sector,pieza,funcamas.Ncama,fecha,hora2,minuto);

@@ -855,6 +855,42 @@ public class Camas
         }
     }
 
+    public bool tieneCamaActual(int ficha)
+    {
+        using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["cnsicbo"].ConnectionString))
+        {
+            con.Open();
+            SqlCommand cmd = new SqlCommand("select count(*) from hos_camaactualpaciente where nro_fi=@ficha",con);
+            cmd.Parameters.AddWithValue("ficha",ficha);
+
+            int cant = (int)cmd.ExecuteScalar();
+            con.Close();
+
+            if (cant > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            
+        }
+    }
+
+    public void borraCamaActual(int ficha)
+    {
+        using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["cnsicbo"].ConnectionString))
+        {
+            con.Open();
+            SqlCommand cmd = new SqlCommand("delete hos_camaactualpaciente where nro_fi=@ficha",con);
+            cmd.Parameters.AddWithValue("ficha",ficha);
+            cmd.ExecuteNonQuery();
+
+            con.Close();
+        }
+    }
+
     #endregion
 
     #region traslado
@@ -1448,7 +1484,11 @@ public class Camas
         using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["cnsicbo"].ConnectionString))
         {
             con.Open();
-            SqlCommand cmd = new SqlCommand("SELECT RTRIM(LTRIM(b.A_PAT))+' '+ RTRIM(LTRIM(b.A_MAT))+' '+ RTRIM(LTRIM(b.NOMBRE))as paciente,C.DESCRIP +' '+ D.DESCRIP +' '+ LTRIM(Str(E.NRO_CA, 25))CAMA FROM HOS_GESTIONCAMA A, PACIENTE B, SECTOR C,PIEZA D,CAMA E WHERE (A.ID_ESTADOCAMA=5 AND A.RUT_NUM=B.RUT_NUM AND A.ID_CAMA=E.ID_CAMA AND E.COD_PIE=D.COD_PIE AND D.COD_SEC=C.COD_SEC AND upper(B.A_PAT) like '%' + upper(@apat) + '%' AND A.ESTADO=1) OR(A.ID_ESTADOCAMA BETWEEN 12 AND 13 AND A.RUT_NUM=B.RUT_NUM AND A.ID_CAMA=E.ID_CAMA AND E.COD_PIE=D.COD_PIE AND D.COD_SEC=C.COD_SEC AND upper(B.A_PAT) like '%' + upper(@apat) + '%' AND A.ESTADO=1)", con);
+            SqlCommand cmd = new SqlCommand(@"SELECT RTRIM(LTRIM(b.A_PAT))+' '+ RTRIM(LTRIM(b.A_MAT))+' '+ RTRIM(LTRIM(b.NOMBRE))as paciente,
+                                            C.DESCRIP +' '+ D.DESCRIP +' '+ LTRIM(Str(E.NRO_CA, 25))CAMA FROM HOS_GESTIONCAMA A, PACIENTE B, SECTOR C,PIEZA D,CAMA E
+                                            WHERE (A.ID_ESTADOCAMA=5 AND A.RUT_NUM=B.RUT_NUM AND A.ID_CAMA=E.ID_CAMA AND E.COD_PIE=D.COD_PIE AND D.COD_SEC=C.COD_SEC 
+                                            AND upper(B.A_PAT) like '%' + upper(@apat) + '%' AND A.ESTADO=1) OR(A.ID_ESTADOCAMA BETWEEN 12 AND 13 AND A.RUT_NUM=B.RUT_NUM 
+                                            AND A.ID_CAMA=E.ID_CAMA AND E.COD_PIE=D.COD_PIE AND D.COD_SEC=C.COD_SEC AND upper(B.A_PAT) like '%' + upper(@apat) + '%' AND A.ESTADO=1)", con);
             cmd.Parameters.AddWithValue("apat",apat);
 
             SqlDataReader dr = cmd.ExecuteReader();
