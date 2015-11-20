@@ -22,7 +22,7 @@
 
 	    function editEvent(id) {
 	        modal.height = 300;
-	        modal.showUrl("AltaPac.aspx?id=" + id);
+	        modal.showUrl("Rtp_altaClinica.aspx?id=" + id);
 	    }
 
 	    function afterRender(data) {

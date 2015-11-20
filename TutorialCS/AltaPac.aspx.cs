@@ -197,6 +197,7 @@ public partial class Edit : Page
                         ButtonOK.Enabled = false;
                         funcamas.enviaCorreo();
                         Modal.Close(this, "OK");
+                        Response.Redirect("~/Rtp_altaClinica.aspx");
                     }
                 }
                 else
@@ -251,5 +252,9 @@ public partial class Edit : Page
             funcamas.cancelaAlta(ficha);
             Modal.Close(this, "OK");
         }
+    }
+    protected void btnimprimir_Click(object sender, ImageClickEventArgs e)
+    {
+        
     }
 }

@@ -1,0 +1,23 @@
+commit 465602057c75b95a3d0b000214e928fc881d3556
+Author: Erwin Arancibia <edarancibia11@gmail.com>
+Date:   Tue Oct 20 15:53:34 2015 -0300
+
+    se puede crear aseo manualmente
+
+commit f596d95b3ec2f6872e2aee2b8155b076263079d4
+Author: Erwin Arancibia <edaranibia11@gmail.com>
+Date:   Mon Oct 19 17:10:20 2015 -0300
+
+    se corrigen datos de camas ocupadas en pagina inicio
+
+commit da177a6834bf06cd287818072855cbe14e9359a8
+Author: Erwin Arancibia <edaranibia11@gmail.com>
+Date:   Mon Oct 19 16:09:23 2015 -0300
+
+    actualiza tabla HOS_CAMACTUALPACIENTE
+
+commit c8435904869d05991e9a4838607d4df0dad940f4
+Author: Erwin Arancibia <edaranibia11@gmail.com>
+Date:   Mon Oct 19 16:04:49 2015 -0300
+
+    se creo modulo ambulatorio

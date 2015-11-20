@@ -115,6 +115,9 @@ public partial class _Default : System.Web.UI.Page
                 case "15":
                     est = "SOLICITA MANTENCIÓN";
                     break;
+                case "22":
+                    est = "EN PABELLON";
+                    break;
                 default:
                     est = "DISPONIBLE";
                     break;
@@ -185,6 +188,9 @@ public partial class _Default : System.Web.UI.Page
                     break;
                 case "15":
                     est = "SOLICITA MANTENCIÓN";
+                    break;
+                case "22":
+                    est = "EN PABELLON";
                     break;
                 default:
                     est = "DISPONIBLE";

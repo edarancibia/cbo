@@ -76,6 +76,12 @@
                           ToolTip="Cancelar alta" 
                           OnClientClick="return confirm('¿Seguro que quiere cancelar el alta de este paciente?')" 
                           onclick="btndeshacer_Click" />
+
+                          &nbsp;&nbsp;&nbsp;
+                    <asp:ImageButton ID="btnimprimir" runat="server"  
+                          ImageUrl="~/media/layout/print.png" ToolTip="Imprime formulario de alta" 
+                          onclick="btnimprimir_Click"/>
+
                     <br />
                     <asp:Label ID="lblerror3" runat="server" Text="Label" Font-Bold="True" 
                         ForeColor="Red"></asp:Label>
