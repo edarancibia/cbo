@@ -80,6 +80,19 @@
 </asp:Content>
 
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
+<div>
+    <asp:Label ID="labelpendientes" runat="server" Text="Traslados pendientes: " ForeColor="Red" Font-Bold="true"></asp:Label>
+     &nbsp;&nbsp;
+    <asp:Label ID="lblpenh" runat="server" Text="Label" ForeColor="Red"></asp:Label>
+     &nbsp;&nbsp;
+    <asp:Label ID="lblpenf" runat="server" Text="Label" ForeColor="Red"></asp:Label>
+     &nbsp;&nbsp;
+    <asp:Label ID="lblpenm" runat="server" Text="Label" ForeColor="Red"></asp:Label>
+     &nbsp;&nbsp;
+    <asp:Label ID="lblpene" runat="server" Text="Label" ForeColor="Red"></asp:Label>
+     &nbsp;&nbsp;
+    <asp:Label ID="lblpenu" runat="server" Text="Label" ForeColor="Red"></asp:Label>
+</div>
     <br />
     <h2>Traslados</h2>
     <div style="margin-bottom: 5px;">

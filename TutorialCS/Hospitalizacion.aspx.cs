@@ -14,6 +14,7 @@ public partial class _Default : System.Web.UI.Page
 {
     public string estado;
     public string est,hora;
+    Pinicio ini = new Pinicio();
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -36,7 +37,29 @@ public partial class _Default : System.Web.UI.Page
             DayPilotScheduler1.SetScrollX(firstOfMonth);
             //cargarCamasYeventos();
             cargarCamasYeventosSFiltro();
+
+            penh();
         }
+    }
+
+    //TRASLADOS PENDIENTES
+
+    private void penh()
+    {
+        ini.pendientesH();
+        lblpenh.Text = "Sector H: " + ini.penH.ToString();
+
+        ini.pendientesF();
+        lblpenf.Text = "Sector F: " + ini.penF.ToString();
+
+        ini.pendientesM();
+        lblpenm.Text = "Sector M: " + ini.penM.ToString();
+
+        ini.pendientesE();
+        lblpene.Text = "Sector E: " + ini.penE.ToString();
+
+        ini.pendientesUPC();
+        lblpenu.Text = "UPC: " + ini.penU.ToString();
     }
 
     private void cargarCamasYeventos()

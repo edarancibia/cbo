@@ -32,6 +32,8 @@ public partial class Inicio : System.Web.UI.Page
         //txtbuscardor.Focus();
         this.txtficha.Attributes.Add("OnKeyPress", "return AcceptNum(event)");
         indiceOcup();
+
+        penh();
     }
 
     private void ocupacionActual()
@@ -175,5 +177,25 @@ public partial class Inicio : System.Web.UI.Page
         fichaHistorial = Convert.ToInt32(txtficha.Text);
         Session["fichah"] = fichaHistorial;
         Response.Redirect("~/Historial.aspx");
+    }
+
+    //TRASLADOS PENDIENTES
+
+    private void penh()
+    {
+        ini.pendientesH();
+        lblpenh.Text = "Sector H: " + ini.penH.ToString();
+
+        ini.pendientesF();
+        lblpenf.Text = "Sector F: " + ini.penF.ToString();
+
+        ini.pendientesM();
+        lblpenm.Text = "Sector M: " + ini.penM.ToString();
+
+        ini.pendientesE();
+        lblpene.Text = "Sector E: " + ini.penE.ToString();
+
+        ini.pendientesUPC();
+        lblpenu.Text = "UPC: " + ini.penU.ToString();
     }
 }

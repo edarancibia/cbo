@@ -46,7 +46,7 @@
         
     #buscador
     {
-        background-color: InfoBackground;
+        
         color: blue;
     }
     </style>
@@ -77,6 +77,20 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
 
+<br />
+<div>
+    <asp:Label ID="labelpendientes" runat="server" Text="Traslados pendientes: " ForeColor="Red" Font-Bold="true"></asp:Label>
+     &nbsp;&nbsp;
+    <asp:Label ID="lblpenh" runat="server" Text="Label" ForeColor="Red"></asp:Label>
+     &nbsp;&nbsp;
+    <asp:Label ID="lblpenf" runat="server" Text="Label" ForeColor="Red"></asp:Label>
+     &nbsp;&nbsp;
+    <asp:Label ID="lblpenm" runat="server" Text="Label" ForeColor="Red"></asp:Label>
+     &nbsp;&nbsp;
+    <asp:Label ID="lblpene" runat="server" Text="Label" ForeColor="Red"></asp:Label>
+     &nbsp;&nbsp;
+    <asp:Label ID="lblpenu" runat="server" Text="Label" ForeColor="Red"></asp:Label>
+</div>
 <br />
 <div id="buscador">
     <asp:Label ID="Label1" runat="server" Text="Buscador de pacientes:"></asp:Label>

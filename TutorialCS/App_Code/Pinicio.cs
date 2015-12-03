@@ -21,7 +21,7 @@ using System.Drawing.Imaging;
 /// </summary>
 public class Pinicio
 {
-    public int ocuh, disph, ocuF, disF, ocuE, disE, ocuM, disM;
+    public int ocuh, disph, ocuF, disF, ocuE, disE, ocuM, disM,penH,penF,penM,penE,penU;
     public string nomPac;
 
     //cuenta las camas ocupadas de cada sector
@@ -183,4 +183,123 @@ public class Pinicio
         }
     }
 
+    public int pendientesH()
+    {
+      using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["cnsicbo"].ConnectionString))
+      {
+         con.Open();
+
+         SqlCommand cmd = new SqlCommand("SELECT(SELECT COUNT(*) FROM HOS_TRASLADOS A, SECTOR B WHERE A.NUEVO_SECTOR=B.COD_SEC AND A.ESTADO=1 AND a.NUEVO_SECTOR=1)CANT", con);
+         cmd.CommandType = CommandType.Text;    
+         SqlDataReader dr = cmd.ExecuteReader();
+
+          if (dr.Read())
+          {
+            penH = (int)dr["CANT"];
+          }
+          else
+          {
+            penH = 0;
+          }
+
+           con.Close();
+           return penH;
+         }
+    }
+
+    public int pendientesF()
+    {
+        using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["cnsicbo"].ConnectionString))
+        {
+            con.Open();
+
+            SqlCommand cmd = new SqlCommand("SELECT(SELECT COUNT(*) FROM HOS_TRASLADOS A, SECTOR B WHERE A.NUEVO_SECTOR=B.COD_SEC AND A.ESTADO=1 AND a.NUEVO_SECTOR=2)CANT", con);
+            cmd.CommandType = CommandType.Text;
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            if (dr.Read())
+            {
+                penF = (int)dr["CANT"];
+            }
+            else
+            {
+                penF = 0;
+            }
+
+            con.Close();
+            return penF;
+        }
+    }
+
+    public int pendientesM()
+    {
+        using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["cnsicbo"].ConnectionString))
+        {
+            con.Open();
+
+            SqlCommand cmd = new SqlCommand("SELECT(SELECT COUNT(*) FROM HOS_TRASLADOS A, SECTOR B WHERE A.NUEVO_SECTOR=B.COD_SEC AND A.ESTADO=1 AND a.NUEVO_SECTOR=3)CANT", con);
+            cmd.CommandType = CommandType.Text;
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            if (dr.Read())
+            {
+                penM = (int)dr["CANT"];
+            }
+            else
+            {
+                penM = 0;
+            }
+
+            con.Close();
+            return penM;
+        }
+    }
+
+    public int pendientesE()
+    {
+        using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["cnsicbo"].ConnectionString))
+        {
+            con.Open();
+
+            SqlCommand cmd = new SqlCommand("SELECT(SELECT COUNT(*) FROM HOS_TRASLADOS A, SECTOR B WHERE A.NUEVO_SECTOR=B.COD_SEC AND A.ESTADO=1 AND a.NUEVO_SECTOR=11)CANT", con);
+            cmd.CommandType = CommandType.Text;
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            if (dr.Read())
+            {
+                penE = (int)dr["CANT"];
+            }
+            else
+            {
+                penE = 0;
+            }
+
+            con.Close();
+            return penE;
+        }
+    }
+
+    public int pendientesUPC()
+    {
+        using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["cnsicbo"].ConnectionString))
+        {
+            con.Open();
+
+            SqlCommand cmd = new SqlCommand("SELECT(SELECT COUNT(*) FROM HOS_TRASLADOS A, SECTOR B WHERE A.NUEVO_SECTOR=B.COD_SEC AND A.ESTADO=1 AND a.NUEVO_SECTOR=4)CANT", con);
+            cmd.CommandType = CommandType.Text;
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            if (dr.Read())
+            {
+                penU = (int)dr["CANT"];
+            }
+            else
+            {
+                penU = 0;
+            }
+
+            con.Close();
+            return penU;
+        }
+    }
 }
