@@ -529,12 +529,12 @@ public class Camas
 
     #region ingreso
 
-    public void ingresoDirecto(string cama, string rut, int estadocama, DateTime fecha, string hora, DateTime fechaini, DateTime fechafin, int estado, int eventopac, string usuario, int tipoingreso, int quirurgico,int ficha)
+    public void ingresoDirecto(string cama, string rut, int estadocama, DateTime fecha, string hora, DateTime fechaini, DateTime fechafin, int estado, int eventopac, string usuario, int tipoingreso, int quirurgico,int ficha,string obs)
     {
         using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["cnsicbo"].ConnectionString))
         {
             con.Open();
-            SqlCommand cmd = new SqlCommand("INSERT INTO HOS_GESTIONCAMA (ID_CAMA,RUT_NUM,ID_ESTADOCAMA,FECHA,HORA,FECHAINI,FECHA_FIN,ESTADO,EVENTOPAC,USUARIO,TIPO_INGRESO,QUIRURGICO,NRO_FI) VALUES(@cama,@rut,@estadocama,@fecha,@hora,@fechaini,@fechafin,@estado,@eventopac,@usuario,@tipoingreso,@quirurgico,@ficha)", con);
+            SqlCommand cmd = new SqlCommand("INSERT INTO HOS_GESTIONCAMA (ID_CAMA,RUT_NUM,ID_ESTADOCAMA,FECHA,HORA,FECHAINI,FECHA_FIN,ESTADO,EVENTOPAC,USUARIO,TIPO_INGRESO,QUIRURGICO,NRO_FI,OBS) VALUES(@cama,@rut,@estadocama,@fecha,@hora,@fechaini,@fechafin,@estado,@eventopac,@usuario,@tipoingreso,@quirurgico,@ficha,@obs)", con);
             cmd.Parameters.AddWithValue("cama", cama);
             cmd.Parameters.AddWithValue("rut", rut);
             cmd.Parameters.AddWithValue("estadocama", estadocama);
@@ -548,6 +548,7 @@ public class Camas
             cmd.Parameters.AddWithValue("tipoingreso", tipoingreso);
             cmd.Parameters.AddWithValue("quirurgico", quirurgico);
             cmd.Parameters.AddWithValue("ficha",ficha);
+            cmd.Parameters.AddWithValue("obs",obs);
             cmd.ExecuteNonQuery();
             cmd.Dispose();
             con.Close();
@@ -556,7 +557,7 @@ public class Camas
 
     #endregion
 
-    #region Preingreso
+    #region Admision
 
     public void buscaxficha(int ficha)
     {
@@ -579,12 +580,12 @@ public class Camas
         }
     }
 
-    public void guardaPreIngreso(int cama,string rut,int estadocama,DateTime fecha,DateTime fechaini,DateTime fechafin, string hora,int estado,int eventopac,string usuario,int tipoin,int tipopac,DateTime fechahora, int ficha)
+    public void guardaPreIngreso(int cama,string rut,int estadocama,DateTime fecha,DateTime fechaini,DateTime fechafin, string hora,int estado,int eventopac,string usuario,int tipoin,int tipopac,DateTime fechahora, int ficha,string obs)
     {
         using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["cnsicbo"].ConnectionString))
         {
             con.Open();
-            SqlCommand cmd = new SqlCommand("INSERT INTO HOS_GESTIONCAMA(ID_CAMA,RUT_NUM,ID_ESTADOCAMA,FECHA,FECHAINI,FECHA_FIN,HORA,ESTADO,EVENTOPAC,USUARIO,TIPO_INGRESO,QUIRURGICO,FECHAHORA,NRO_FI)VALUES(@cama,@rut,@estadocama,@fecha,@fechaini,@fechafin,@hora,@estado,@eventopac,@usuario,@tipoin,@tipopac,@fechahora,@ficha)",con);
+            SqlCommand cmd = new SqlCommand("INSERT INTO HOS_GESTIONCAMA(ID_CAMA,RUT_NUM,ID_ESTADOCAMA,FECHA,FECHAINI,FECHA_FIN,HORA,ESTADO,EVENTOPAC,USUARIO,TIPO_INGRESO,QUIRURGICO,FECHAHORA,NRO_FI,OBS)VALUES(@cama,@rut,@estadocama,@fecha,@fechaini,@fechafin,@hora,@estado,@eventopac,@usuario,@tipoin,@tipopac,@fechahora,@ficha,@obs)",con);
             cmd.Parameters.AddWithValue("cama",cama);
             cmd.Parameters.AddWithValue("rut", rut);
             cmd.Parameters.AddWithValue("estadocama",estadocama);
@@ -599,6 +600,7 @@ public class Camas
             cmd.Parameters.AddWithValue("tipopac", tipopac);
             cmd.Parameters.AddWithValue("fechahora",fechahora);
             cmd.Parameters.AddWithValue("ficha",ficha);
+            cmd.Parameters.AddWithValue("obs",obs);
             cmd.ExecuteNonQuery();
             cmd.Dispose();
             con.Close();
@@ -891,17 +893,30 @@ public class Camas
         }
     }
 
+    public void updObs(int id,string obs)
+    {
+        using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["cnsicbo"].ConnectionString))
+        {
+            con.Open();
+            SqlCommand cmd = new SqlCommand("update hos_gestioncama set obs=@obs where id_evento=@id",con);
+            cmd.Parameters.AddWithValue("obs",obs);
+            cmd.Parameters.AddWithValue("id",id);
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+    }
+
     #endregion
 
     #region traslado
     //******************************TRASLADO************************************************************
     //crea un nuevo registro con los datos de la reserva y paciente que se traslada
-    public void traslado(int sec_ori, int pie_ori, int cama2, string rut, DateTime fecha, string hora, int n_sector, int estado, string usuario, string obs, DateTime fechahora, DateTime fechaini, DateTime fechafin,int tipoingreso,int tipopac,int ficha)
+    public void traslado(int sec_ori, int pie_ori, int cama2, string rut, DateTime fecha, string hora, int n_sector, int estado, string usuario, string obs, DateTime fechahora, DateTime fechaini, DateTime fechafin,int tipoingreso,int tipopac,int ficha,string obs2)
     {
         using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["cnsicbo"].ConnectionString))
         {
             con.Open();
-            SqlCommand cmd = new SqlCommand("INSERT INTO HOS_TRASLADOS(COD_SEC,NRO_PIE,ID_CAMA,RUT_NUM,FECHA,HORA,NUEVO_SECTOR,ESTADO,USUARIO,OBS,FECHAHORA,FECHAINI,FECHAFIN,TIPOINGRESO,TIPOPAC,NRO_FI) VALUES(@sec_ori,@pie_ori,@cama2,@rut,@fecha,@hora,@n_sector,@estado,@usuario,@obs,@fechahora,@fechaini,@fechafin,@tipoingreso,@tipopac,@ficha)", con);
+            SqlCommand cmd = new SqlCommand("INSERT INTO HOS_TRASLADOS(COD_SEC,NRO_PIE,ID_CAMA,RUT_NUM,FECHA,HORA,NUEVO_SECTOR,ESTADO,USUARIO,OBS,FECHAHORA,FECHAINI,FECHAFIN,TIPOINGRESO,TIPOPAC,NRO_FI,OBS2) VALUES(@sec_ori,@pie_ori,@cama2,@rut,@fecha,@hora,@n_sector,@estado,@usuario,@obs,@fechahora,@fechaini,@fechafin,@tipoingreso,@tipopac,@ficha,@obs2)", con);
             cmd.Parameters.AddWithValue("sec_ori", sec_ori);
             cmd.Parameters.AddWithValue("pie_ori", pie_ori);
             cmd.Parameters.AddWithValue("cama2", cama2);
@@ -919,6 +934,7 @@ public class Camas
             cmd.Parameters.AddWithValue("tipoingreso", tipoingreso);
             cmd.Parameters.AddWithValue("tipopac", tipopac);
             cmd.Parameters.AddWithValue("ficha",ficha);
+            cmd.Parameters.AddWithValue("obs2",obs2);
             cmd.ExecuteNonQuery();
             cmd.Dispose();
             con.Close();
@@ -983,12 +999,12 @@ public class Camas
 
 
     //ingreso por traslado normal
-    public void ingresoTraslado(string cama, string rut, int estadocama, DateTime fecha, string hora, DateTime fechaini, DateTime fechafin, int estado, int eventopac, string usuario, int tipoingreso, int quirurgico, DateTime fechahora,int ficha)
+    public void ingresoTraslado(string cama, string rut, int estadocama, DateTime fecha, string hora, DateTime fechaini, DateTime fechafin, int estado, int eventopac, string usuario, int tipoingreso, int quirurgico, DateTime fechahora,int ficha,string obs)
     {
         using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["cnsicbo"].ConnectionString))
         {
             con.Open();
-            SqlCommand cmd = new SqlCommand("INSERT INTO HOS_GESTIONCAMA (ID_CAMA,RUT_NUM,ID_ESTADOCAMA,FECHA,HORA,FECHAINI,FECHA_FIN,ESTADO,EVENTOPAC,USUARIO,TIPO_INGRESO,QUIRURGICO,FECHAHORA,NRO_FI) VALUES(@cama,@rut,@estadocama,@fecha,@hora,@fechaini,@fechafin,@estado,@eventopac,@usuario,@tipoingreso,@quirurgico,@fechahora,@ficha)", con);
+            SqlCommand cmd = new SqlCommand("INSERT INTO HOS_GESTIONCAMA (ID_CAMA,RUT_NUM,ID_ESTADOCAMA,FECHA,HORA,FECHAINI,FECHA_FIN,ESTADO,EVENTOPAC,USUARIO,TIPO_INGRESO,QUIRURGICO,FECHAHORA,NRO_FI,OBS) VALUES(@cama,@rut,@estadocama,@fecha,@hora,@fechaini,@fechafin,@estado,@eventopac,@usuario,@tipoingreso,@quirurgico,@fechahora,@ficha,@obs)", con);
             cmd.Parameters.AddWithValue("cama", cama);
             cmd.Parameters.AddWithValue("rut", rut);
             cmd.Parameters.AddWithValue("estadocama", estadocama);
@@ -1003,6 +1019,7 @@ public class Camas
             cmd.Parameters.AddWithValue("quirurgico", quirurgico);
             cmd.Parameters.AddWithValue("fechahora", fechahora);
             cmd.Parameters.AddWithValue("ficha",ficha);
+            cmd.Parameters.AddWithValue("obs",obs);
             cmd.ExecuteNonQuery();
             cmd.Dispose();
             con.Close();

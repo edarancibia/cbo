@@ -66,6 +66,7 @@ public partial class Edit : System.Web.UI.Page
                     Session["tipoingreso"] = tipoingreso;
                     Session["tipopac"] = Convert.ToInt32(dr["QUIRURGICO"]);
                     Session["ficha2"] = Convert.ToInt32(dr["NRO_FI"]);
+                    Session["obs2"] = Convert.ToString(dr["OBS"]);
 
                     //llena combo camas
                     cboCamas.DataSource = funcamas.llenaCamas();
@@ -110,6 +111,7 @@ public partial class Edit : System.Web.UI.Page
                         Session["tipoingreso"] = tipoingreso;
                         Session["tipopac"] = Convert.ToInt32(dr["QUIRURGICO"]);
                         Session["ficha2"] = Convert.ToInt32(dr["NRO_FI"]);
+                        Session["obs2"] = Convert.ToString(dr["OBS"]);
 
                         //llena combo camas
                         cboCamas.DataSource = funcamas.llenaCamas();
@@ -180,7 +182,7 @@ public partial class Edit : System.Web.UI.Page
             funcamas.terminaCamaActual(id, cama, 0, 0);
             updEstEvento(cama, 0, 0);
             funcamas.CreaAseoTras(cama2, 11, fecha, fecha, fecha, hora, usuario, 1, 1);
-            funcamas.traslado(sec_ori, pie_ori, cama2, rut, fecha, hora, n_sector, 0, usuario, obs, fechahora, fechaini, fechafin, tipoin, tipopac2, ficha);
+            funcamas.traslado(sec_ori, pie_ori, cama2, rut, fecha, hora, n_sector, 0, usuario, obs, fechahora, fechaini, fechafin, tipoin, tipopac2, ficha,Convert.ToString(Session["obs2"]));
             funcamas.enviaCorreo();
             ButtonOK.Enabled = false;
             Modal.Close(this, "OK");
@@ -196,7 +198,7 @@ public partial class Edit : System.Web.UI.Page
             funcamas.terminaCamaActual(id, cama, 0, 0);
             updEstEvento(cama, 0, 0);
             funcamas.CreaAseoTras(cama2, 11, fecha, fecha, fecha, hora, usuario, 1, 1);
-            funcamas.traslado(sec_ori, pie_ori, cama2, rut, fecha, hora, n_sector, 1, usuario, obs, fechahora, fechaini, fechafin, tipoin, tipopac2, ficha);
+            funcamas.traslado(sec_ori, pie_ori, cama2, rut, fecha, hora, n_sector, 1, usuario, obs, fechahora, fechaini, fechafin, tipoin, tipopac2, ficha, Convert.ToString(Session["obs2"]));
             funcamas.enviaCorreo();
             ButtonOK.Enabled = false;
             Modal.Close(this, "OK");

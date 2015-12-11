@@ -57,8 +57,11 @@
             </tr>
 
             <tr>
+                <td align="right">Observaciones:</td>
+                <td><asp:TextBox ID="txtobs" runat="server" Width="200px"></asp:TextBox></td>
+            </tr>
+            <tr> 
                 <td></td>
-                
                 <td><asp:RadioButton ID="RadioButton1" runat="server" GroupName="aislamiento" Text="Bloqueo exclusiva" /></td>
             </tr>
             <tr>

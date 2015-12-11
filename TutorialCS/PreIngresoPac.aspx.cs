@@ -121,7 +121,7 @@ public partial class Edit : Page
                         funcamas.updhos_camaactualpaciente(ficha, funcamas.sector, pieza, funcamas.Ncama, fecha, hora2, minuto);
 
                         camasPieza(funcamas.pieza);
-                        funcamas.guardaPreIngreso(cama, rut2, 18, fecha, fechaini, fechafin, hora, 0, 1, usuario, tipoin, tipopac, fecha, ficha);
+                        funcamas.guardaPreIngreso(cama, rut2, 18, fecha, fechaini, fechafin, hora, 0, 1, usuario, tipoin, tipopac, fecha, ficha,txtobs.Text);
                         Modal.Close(this, "OK");
                     }
                 }
@@ -158,7 +158,7 @@ public partial class Edit : Page
 
                     funcamas.obtieneNCama(cama);
                     funcamas.updhos_camaactualpaciente(ficha,funcamas.sector,pieza,funcamas.Ncama,fecha,hora2,minuto);
-                    funcamas.guardaPreIngreso(cama, rut2, 18, fecha, fechaini, fechafin, hora, 0, 1, usuario, tipoin, tipopac, fecha, ficha);
+                    funcamas.guardaPreIngreso(cama, rut2, 18, fecha, fechaini, fechafin, hora, 0, 1, usuario, tipoin, tipopac, fecha, ficha,txtobs.Text);
                     Modal.Close(this, "OK");
                 }
             }

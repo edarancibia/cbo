@@ -74,6 +74,7 @@ public partial class Edit : Page
                     estadocama = Convert.ToInt32(dr["ID_ESTADOCAMA"]);
                     txtape3.Text = dr["APELLIDO"] as string;
                     txtnom3.Text = dr["NOMBRE"] as string;
+                    txtobs.Text = dr["OBS"] as string;
                     string ultimaalta = Convert.ToString(dr["HORA"]);
                     txtultima.Text = ultimaalta;
                     rut2 = dr["RUT_NUM"] as string;

@@ -58,6 +58,10 @@
                 <td align="right">Tipo ingreso:</td>
                 <td><asp:DropDownList ID="cbotipoingre" runat="server" Width="200px"></asp:DropDownList></td>
             </tr>
+            <tr>
+             <td><asp:Label ID="Label1" runat="server" Text="Observaciones:"></asp:Label></td>
+             <td><asp:TextBox ID="txtobs" runat="server" Width="200"></asp:TextBox></td>
+            </tr>
 
             <tr>
              <td><asp:Label ID="lblmant" runat="server" Text="Mantención:"></asp:Label></td>
@@ -70,6 +74,12 @@
                     <asp:ImageButton ID="ButtonOK" runat="server" OnClick="ButtonOK_Click" ImageUrl="~/media/layout/icon-ok.ico" 
                       OnClientClick="return confirm('¿Confirma que desea ingresar el paciente?');" />
                       &nbsp&nbsp&nbsp&nbsp
+
+                      <asp:ImageButton
+                        ID="ImageButton2" runat="server"  ImageUrl="~/media/layout/editar.ico" 
+                        ToolTip="Editar observación" onclick="ImageButton2_Click" OnClientClick="return confirm('¿Confirma que desea editar la observación?');"/>
+                       &nbsp&nbsp&nbsp&nbsp
+
                     <asp:ImageButton ID="ImageButton1" runat="server" 
                         ImageUrl="~/media/layout/cancelar.ico" OnClick="ButtonCancel_Click" 
                         Width="40px" />

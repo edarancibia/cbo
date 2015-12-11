@@ -51,6 +51,7 @@ public partial class Edit : Page
             Session["tipopac2"] = Convert.ToInt32(dr["TIPOPAC"]);
             Session["ficha3"] = Convert.ToInt32(dr["NRO_FI"]);
             txtobs.Text=Convert.ToString(dr["OBS"]);
+            Session["obs3"] = Convert.ToString(dr["OBS2"]);
 
             //llena combo camas
             cboCamas.DataSource = funcamas.llenaCamasNsec(nuevo_sector);

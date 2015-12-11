@@ -58,6 +58,10 @@
                 <td><asp:TextBox ID="txthora" runat="server" Width="200px" type="time" ></asp:TextBox></td>
             </tr>
             <tr>
+                <td align="right">Observación:</td>
+                <td><asp:TextBox ID="txtobs" runat="server" Width="200px" Enabled="false" ></asp:TextBox></td>
+            </tr>
+            <tr>
                 <td align="right">
                      <asp:ImageButton ID="ButtonOK" runat="server" OnClick="ButtonOK_Click" ImageUrl="~/media/layout/icon-ok.ico" 
                        OnClientClick="return confirm('¿Confirma que desea dar de alta al paciente?');"  ToolTip="Aceptar" />

@@ -42,6 +42,7 @@ public partial class Edit : Page
             Session["idevento"] = Convert.ToInt32(dr["ID_EVENTO"]);
             estadocama = Convert.ToInt32(dr["ID_ESTADOCAMA"]);
             Session["estadocama"] = estadocama;
+            Session["obs"] = Convert.ToString(dr["OBS"]);
 
             TextBoxStart.Text = Convert.ToDateTime(dr["FECHAINI"]).ToShortDateString();
             TextBoxEnd.Text = Convert.ToDateTime(dr["FECHA_FIN"]).ToShortDateString();
@@ -133,7 +134,7 @@ public partial class Edit : Page
        
        funcamas.updEstEvento(cama, estado);
        funcamas.cierraReserva(id, fechafin);
-       funcamas.ingresoDirecto(cama, rut, 5, fecha, hora, fechaini, fechafin, 1, 1, usuario, tipoingreso, quirurgico,ficha);
+       funcamas.ingresoDirecto(cama, rut, 5, fecha, hora, fechaini, fechafin, 1, 1, usuario, tipoingreso, quirurgico,ficha,Convert.ToString(Session["OBS"]));
        Modal.Close(this, "OK");
     }
 

@@ -39,13 +39,16 @@ public partial class Edit : Page
             Session["ficha"] = Convert.ToInt32(dr["nro_fi"]);
             int ideve1 = Convert.ToInt32(Session["idevento"]);
             int estado = Convert.ToInt32(dr["ID_ESTADOCAMA"]);
+            txtobs.Text = dr["OBS"] as string;
 
-            if ((estado == 18)||(estado == 6)||(estado==7))
+            if ((estado == 18)||(estado == 6)||(estado==7)||(estado==5)||(estado==22)||(estado >= 12 && estado <= 13))
             {
                 TextBoxStart.Text = Convert.ToDateTime(dr["FECHAINI"]).ToShortDateString();
                 TextBoxEnd.Text = Convert.ToDateTime(dr["FECHA_FIN"]).ToShortDateString();
                 txtape.Text = dr["APELLIDO"] as string;
                 txtnom.Text = dr["NOMBRE"] as string;
+                txtobs.Text = dr["OBS"] as string;
+                txtficha.Text = dr["NRO_FI"] as string;
 
                 //llena combo camas
                 cboCamas.DataSource = funcamas.llenaCamas();
@@ -99,6 +102,7 @@ public partial class Edit : Page
                 cbotipopac.Enabled = false;
                 txtficha.ReadOnly = true;
                 LinkButton2.Visible = false;
+                txtobs.Text = dr["OBS"] as string;
             }
 
             
@@ -107,6 +111,7 @@ public partial class Edit : Page
             {
                 lblerror2.Text = "La cama no está disponible";
                 lblerror2.Visible = true;
+                txtobs.Text = dr["OBS"] as string;
             }
         }
     }
@@ -124,7 +129,7 @@ public partial class Edit : Page
         string rut2 = Convert.ToString(Session["rut"]);
         int ficha = Convert.ToInt32(txtficha.Text);
 
-        funcamas.guardaPreIngreso(cama,rut2,18,fecha,fechaini,fechafin,hora,0,1,usuario,tipoin,tipopac,fecha,ficha);
+        funcamas.guardaPreIngreso(cama,rut2,18,fecha,fechaini,fechafin,hora,0,1,usuario,tipoin,tipopac,fecha,ficha,txtobs.Text);
         Modal.Close(this, "OK");
     }
 
@@ -155,9 +160,17 @@ public partial class Edit : Page
 
         Modal.Close(this, "OK");
     }
+
     protected void LinkButton2_Click(object sender, EventArgs e)
     {
         funcamas.terminaReserva(Convert.ToInt32(Session["idevento"]));
         Modal.Close(this,"OK");
+    }
+
+    protected void ImageButton2_Click(object sender, ImageClickEventArgs e)
+    {
+
+        funcamas.updObs(Convert.ToInt32(Session["idevento"]),txtobs.Text);
+        Modal.Close(this, "OK");
     }
 }
